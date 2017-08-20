@@ -617,7 +617,7 @@ static void CheckVideoDefaultSettings()
 	// Video card changed since last run
 	CString sVideoDriver = GetVideoDriverName();
 	
-	LOG->Trace( "Last seen video driver: " + PREFSMAN->m_sLastSeenVideoDriver.Get() );
+	LOG->Trace( "Last seen video driver: %s", PREFSMAN->m_sLastSeenVideoDriver.Get().c_str() );
 
 	const VideoCardDefaults* pDefaults = NULL;
 	
@@ -881,7 +881,7 @@ static void MountTreeOfZips( const CString &dir, bool recurse = true )
 
 static void WriteLogHeader()
 {
-	LOG->Info( ProductInfo::GetFullVersion() );
+	LOG->Info( "%s", ProductInfo::GetFullVersion().c_str() );
 
 	LOG->Info( "Compiled %s (build %s)",
 		ProductInfo::GetBuildDate().c_str(),

@@ -64,7 +64,7 @@ static bool IsReadOnlyMountPoint( const CString &mountPoint )
 	aFile = setmntent( "/proc/mounts", "r" );
 	if( aFile == NULL )
 	{
-		LOG->Warn( "Can't open /proc/mounts to determine if " + mountPoint + " is a readonly filesystem mountpoint" );
+		LOG->Warn( "Can't open /proc/mounts to determine if %s is a readonly filesystem mountpoint", mountPoint.c_str() );
 		return false;
 	}
 	

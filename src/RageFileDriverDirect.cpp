@@ -88,11 +88,11 @@ bool RageFileDriverDirect::Move( const CString &sOldPath_, const CString &sNewPa
 		CreateDirectories( m_sRoot + sDir );
 	}
 
-	LOG->Trace( ssprintf("rename \"%s\" -> \"%s\"", (m_sRoot + sOldPath).c_str(), (m_sRoot + sNewPath).c_str()) );
+	LOG->Trace( "rename \"%s\" -> \"%s\"", (m_sRoot + sOldPath).c_str(), (m_sRoot + sNewPath).c_str() );
 
 	if( DoRename(m_sRoot + sOldPath, m_sRoot + sNewPath) == -1 )
 	{
-		LOG->Warn( ssprintf("rename(%s,%s) failed: %s", (m_sRoot + sOldPath).c_str(), (m_sRoot + sNewPath).c_str(), strerror(errno)) );
+		LOG->Warn( "rename(%s,%s) failed: %s", (m_sRoot + sOldPath).c_str(), (m_sRoot + sNewPath).c_str(), strerror(errno) );
 		return false;
 	}
 

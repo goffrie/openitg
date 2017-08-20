@@ -1087,7 +1087,7 @@ bool XNode::LoadFromFile( const CString &sFile )
 	if( !bSuccess )
 	{
 		CString sWarning = ssprintf( "XML: LoadFromFile failed for file: %s", sFile.c_str() );
-		LOG->Warn( sWarning );
+		LOG->Warn( "%s", sWarning.c_str() );
 		Dialog::OK( sWarning, "XML_PARSE_ERROR" );
 	}
 	return bSuccess;
@@ -1113,7 +1113,7 @@ bool XNode::LoadFromFile( RageFileBasic &f )
 
 error:
 	CString sWarning = ssprintf( "XML: LoadFromFile failed: %s", pi.error_string.c_str() );
-	LOG->Warn( sWarning );
+	LOG->Warn( "%s", sWarning.c_str() );
 	Dialog::OK( sWarning, "XML_PARSE_ERROR" );
 	return false;
 }

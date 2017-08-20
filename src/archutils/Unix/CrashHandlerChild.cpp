@@ -327,7 +327,7 @@ static void child_process()
 
     fprintf(CrashDump, "Checkpoints:\n");
     for (unsigned i=0; i<Checkpoints.size(); ++i)
-        fprintf(CrashDump, Checkpoints[i]);
+      fprintf(CrashDump, "%s", Checkpoints[i].c_str());
     fprintf(CrashDump, "\n");
 
     for( int i = 0; i < CrashData::MAX_BACKTRACE_THREADS; ++i )
@@ -363,15 +363,17 @@ static void child_process()
 
 	fprintf(tty,
 		"\n"
-		+ ProductInfo::GetName()
-		+ " has crashed.  Debug information has been output to\n"
-		"\n"
-		"    " + sCrashInfoPath + "\n"
+    "%s has crashed.  Debug information has been output to\n"
+    "\n"
+		"    %s\n"
 		"\n"
 		"Please report a bug at:\n"
 		"\n"
-		"    " + ProductInfo::GetCrashReportURL() + "\n"
+		"    %s\n"
 		"\n"
+          , ProductInfo::GetName().c_str()
+          , sCrashInfoPath.c_str()
+          , ProductInfo::GetCrashReportURL().c_str()
 	);
 
 #endif
